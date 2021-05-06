@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Cards from './Cards';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -17,16 +19,29 @@ const useStyles = makeStyles((theme) => ({
 function JobBoard() {
   const [spacing] = React.useState(2);
   const classes = useStyles();
-  const jobStatuses = ['Applied', 'Interviewing', 'Rejected', 'Offers'];
+  //const jobStatuses = ['Applied', 'Interviewing', 'Rejected', 'Offers'];
   return (
     <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12}>
+      <Grid item sm={12}>
         <Grid container justify='center' spacing={spacing}>
-          {jobStatuses.map((status, index) => (
-            <Grid key={index} item>
-              <Paper className={classes.paper}>{status}</Paper>
-            </Grid>
-          ))}
+          <Grid item>
+            <Paper className={classes.paper}>
+              Applied
+              <Cards />
+            </Paper>
+          </Grid>
+          <Grid item>
+            <Paper className={classes.paper}>
+              Interviewing
+              <Cards />
+            </Paper>
+          </Grid>
+          <Grid item>
+            <Paper className={classes.paper}>
+              Rejected
+              <Cards />
+            </Paper>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
