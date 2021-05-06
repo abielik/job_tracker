@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
 function JobBoard() {
   const [spacing] = React.useState(2);
   const classes = useStyles();
-  const jobStatus = ['Applied', 'Interviewing', 'Rejected', 'Offers'];
+  const jobStatuses = ['Applied', 'Interviewing', 'Rejected', 'Offers'];
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify='center' spacing={spacing}>
-          {jobStatus.map((status) => (
-            <Grid key={status} item>
+          {jobStatuses.map((status, index) => (
+            <Grid key={index} item>
               <Paper className={classes.paper}>{status}</Paper>
             </Grid>
           ))}
