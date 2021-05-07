@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,6 +6,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 //import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+
+import { getApplied } from '../firebase/getApplied';
 
 const useStyles = makeStyles({
   root: {
@@ -27,27 +29,41 @@ const useStyles = makeStyles({
 function Cards() {
   const classes = useStyles();
 
-  const dummy = [
-    {
-      title: 'sales',
-      company: 'Google',
-      timeStamp: '2 days',
-    },
-    {
-      title: 'CEO',
-      company: 'Amazon',
-      timeStamp: '1 week',
-    },
-    {
-      title: 'VP Sales',
-      company: 'Facebook',
-      timeStamp: 'today',
-    },
-  ];
+  const [applications, setApplications] = useState([]);
+
+  useEffect(() => {
+    getApplied('X7piePx0YhziBYpEVsEf')
+      .then((results) => {
+        setApplications(results);
+      })
+      .catch((error) => {
+        console.warn(error);
+        window.alert(error.message);
+      });
+  }, []);
+
+  // console.log('DUMMYH:,', dummy);
+  // const dummy = [
+  //   {
+  //     title: 'sales',
+  //     company: 'Google',
+  //     timeStamp: '2 days',
+  //   },
+  //   {
+  //     title: 'CEO',
+  //     company: 'Amazon',
+  //     timeStamp: '1 week',
+  //   },
+  //   {
+  //     title: 'VP Sales',
+  //     company: 'Facebook',
+  //     timeStamp: 'today',
+  //   },
+  // ];
 
   return (
     <Grid container spacing={2}>
-      {dummy.map((jobCard, index) => (
+      {applications.map((jobCard, index) => (
         <Grid key={index} item xs={12}>
           <Card className={classes.root} variant='outlined'>
             <CardActionArea>
