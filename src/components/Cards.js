@@ -7,7 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-//import { getApplied } from '../firebase/getApplied';
+import { getApplied } from '../firebase/getApplied';
 
 const useStyles = makeStyles({
   root: {
@@ -26,11 +26,10 @@ const useStyles = makeStyles({
   },
 });
 
-function Cards(props) {
+function Cards() {
   const classes = useStyles();
 
   const [applications, setApplications] = useState([]);
-  const { getApplied } = props;
 
   useEffect(() => {
     getApplied('X7piePx0YhziBYpEVsEf')
@@ -41,7 +40,26 @@ function Cards(props) {
         console.warn(error);
         window.alert(error.message);
       });
-  }, [getApplied]);
+  }, []);
+
+  // console.log('DUMMYH:,', dummy);
+  // const dummy = [
+  //   {
+  //     title: 'sales',
+  //     company: 'Google',
+  //     timeStamp: '2 days',
+  //   },
+  //   {
+  //     title: 'CEO',
+  //     company: 'Amazon',
+  //     timeStamp: '1 week',
+  //   },
+  //   {
+  //     title: 'VP Sales',
+  //     company: 'Facebook',
+  //     timeStamp: 'today',
+  //   },
+  // ];
 
   return (
     <Grid container spacing={2}>

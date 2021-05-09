@@ -2,8 +2,6 @@ import React from 'react';
 
 import Cards from './Cards';
 
-import { getApplied } from '../firebase/getApplied';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -30,7 +28,7 @@ function JobBoard() {
               <Grid item key={index}>
                 <Paper className={classes.paper}>
                   {status}
-                  <Cards getApplied={getApplied} />
+                  <Cards />
                 </Paper>
               </Grid>
             );
