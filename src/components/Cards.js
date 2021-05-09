@@ -42,25 +42,6 @@ function Cards() {
       });
   }, []);
 
-  // console.log('DUMMYH:,', dummy);
-  // const dummy = [
-  //   {
-  //     title: 'sales',
-  //     company: 'Google',
-  //     timeStamp: '2 days',
-  //   },
-  //   {
-  //     title: 'CEO',
-  //     company: 'Amazon',
-  //     timeStamp: '1 week',
-  //   },
-  //   {
-  //     title: 'VP Sales',
-  //     company: 'Facebook',
-  //     timeStamp: 'today',
-  //   },
-  // ];
-
   return (
     <Grid container spacing={2}>
       {applications.map((jobCard, index) => (
