@@ -16,7 +16,20 @@ export function AddApplicationForm() {
 
   return (
     <form className={classes.root} noValidate autoComplete='off'>
-      <TextField id='outlined-basic' label='Outlined' variant='outlined' />
+      <TextField
+        required
+        id='title'
+        label='Title'
+        variant='filled'
+        color='primary'
+      />
+      <TextField
+        required
+        id='company'
+        label='Company'
+        variant='filled'
+        color='primary'
+      />
     </form>
   );
 }
