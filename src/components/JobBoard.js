@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Cards from './Cards';
+import JobCard from './Card';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+
+import { getAllApplications } from '../firebase/getAllApplications';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,19 @@ const useStyles = makeStyles((theme) => ({
 function JobBoard() {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
+  const [allApplications, setAllApplications] = useState([]);
+
+  useEffect(() => {
+    getAllApplications('X7piePx0YhziBYpEVsEf')
+      .then((applications) => {
+        setAllApplications(applications);
+      })
+      .catch((error) => {
+        console.warn(error);
+        window.alert(error.message);
+      });
+  }, []);
+
   return (
     <Grid container className={classes.root} spacing={2}>
       <Grid item sm={12}>
@@ -28,7 +43,20 @@ function JobBoard() {
               <Grid item key={index}>
                 <Paper className={classes.paper}>
                   {status}
-                  <Cards />
+
+                  {allApplications
+                    .filter((application) => {
+                      return application.status === status.toLowerCase();
+                    })
+                    .map((filteredApplication) => {
+                      return (
+                        <JobCard
+                          title={filteredApplication.title}
+                          company={filteredApplication.company}
+                          timeStamp={filteredApplication.timeStamp}
+                        />
+                      );
+                    })}
                 </Paper>
               </Grid>
             );

@@ -10,7 +10,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import { addApplication } from '../firebase/addApplication';
-import { getApplied } from '../firebase/getApplied';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -92,7 +91,7 @@ export function AddApplicationForm(props) {
     event.preventDefault();
     console.log('Title: ', title, 'Compnay: ', company);
     addApplication('X7piePx0YhziBYpEVsEf', title, company, 'applied');
-    getApplied('X7piePx0YhziBYpEVsEf');
+    //getApplied('X7piePx0YhziBYpEVsEf');
     props.closeForm();
   };
 
