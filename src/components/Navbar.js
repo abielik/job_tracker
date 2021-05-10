@@ -45,7 +45,7 @@ function Navbar() {
 
   const body = (
     <div className={classes.paper}>
-      <AddApplicationForm />
+      <AddApplicationForm closeForm={handleCloseApplicationForm} />
     </div>
   );
 
