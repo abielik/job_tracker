@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import { addApplication } from '../firebase/addApplication';
 import { getApplied } from '../firebase/getApplied';
@@ -114,9 +119,14 @@ export function AddApplicationForm(props) {
         color='primary'
         onChange={(event) => setCompany(event.target.value)}
       />
-      <Fab type='submit' color='primary' aria-label='add'>
-        <AddIcon />
-      </Fab>
+      <Button
+        type='submit'
+        color='primary'
+        variant='contained'
+        aria-label='add'
+      >
+        Save <AddIcon />
+      </Button>
     </form>
   );
 }
