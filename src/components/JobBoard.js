@@ -48,9 +48,10 @@ function JobBoard() {
                     .filter((application) => {
                       return application.status === status.toLowerCase();
                     })
-                    .map((filteredApplication) => {
+                    .map((filteredApplication, index) => {
                       return (
                         <JobCard
+                          key={index}
                           title={filteredApplication.title}
                           company={filteredApplication.company}
                           timeStamp={filteredApplication.timeStamp}
