@@ -7,10 +7,11 @@ export async function addApplication(
   userId,
   title,
   company,
-  dateApplied,
+  // dateApplied,
   status
 ) {
   try {
+    console.log('hello from addApplication()!!');
     const applicationsCollectionRef = firestore
       .collection('users')
       .doc(userId)
@@ -19,7 +20,7 @@ export async function addApplication(
     await applicationsCollectionRef.add({
       title,
       company,
-      dateApplied,
+      // dateApplied,
       status,
     });
   } catch (err) {

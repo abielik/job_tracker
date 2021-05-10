@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
+import { addApplication } from '../firebase/addApplication';
+import { getApplied } from '../firebase/getApplied';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -21,6 +24,8 @@ export function AddApplicationForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Title: ', title, 'Compnay: ', company);
+    addApplication('X7piePx0YhziBYpEVsEf', title, company, 'applied');
+    getApplied('X7piePx0YhziBYpEVsEf');
     props.closeForm();
   };
 
