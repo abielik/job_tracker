@@ -11,11 +11,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AddApplicationForm() {
+export function AddApplicationForm() {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate autoComplete='off'>
+      <TextField id='outlined-basic' label='Outlined' variant='outlined' />
       <TextField id='outlined-basic' label='Outlined' variant='outlined' />
     </form>
   );
