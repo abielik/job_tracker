@@ -21,20 +21,6 @@ export async function getApplied(userId) {
     // then, run the code below
     console.log('snapshot: ', snapshot);
 
-    // add collection of "applied" status to firestore
-    // snapshot.docs.forEach((doc) => {
-    //   firestore
-    //     .collection('users')
-    //     .doc(userId)
-    //     .collection('statusIsApplied')
-    //     .add({
-    //       title: doc.title,
-    //       company: doc.company,
-    //       status: doc.status,
-    //       dateApplied: doc.timeStamp,
-    //     });
-    // });
-
     return snapshot.docs.map((doc) => {
       return doc.data();
     });
