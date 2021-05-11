@@ -55,6 +55,7 @@ function JobBoard() {
                           title={filteredApplication.title}
                           company={filteredApplication.company}
                           timeStamp={filteredApplication.timeStamp}
+                          jobLink={filteredApplication.jobLink}
                         />
                       );
                     })}

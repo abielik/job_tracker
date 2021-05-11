@@ -8,7 +8,8 @@ export async function addApplication(
   title,
   company,
   // dateApplied,
-  status
+  status,
+  jobLink
 ) {
   try {
     console.log('hello from addApplication()!!');
@@ -22,6 +23,7 @@ export async function addApplication(
       company,
       // dateApplied,
       status,
+      jobLink,
     });
   } catch (err) {
     console.log('Origin: addApplication.addApplication(): ', err);

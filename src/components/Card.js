@@ -6,6 +6,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 //import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -26,7 +27,9 @@ const useStyles = makeStyles({
 
 function JobCard(props) {
   const classes = useStyles();
-  const { title, company, timeStamp } = props;
+  const { title, company, timeStamp, jobLink } = props;
+
+  const preventDefault = (event) => event.preventDefault();
   return (
     <Card className={classes.root} variant='outlined'>
       <CardActionArea>
@@ -39,6 +42,11 @@ function JobCard(props) {
           </Typography>
           <Typography variant='body2' component='p'>
             {timeStamp}
+          </Typography>
+          <Typography>
+            <Link href={jobLink} onClick={preventDefault}>
+              Go to Job Post
+            </Link>
           </Typography>
         </CardContent>
       </CardActionArea>

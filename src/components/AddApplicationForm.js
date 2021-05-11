@@ -86,11 +86,12 @@ export function AddApplicationForm(props) {
   const classes = useStyles();
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
+  const [jobLink, setJobLink] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Title: ', title, 'Compnay: ', company);
-    addApplication('X7piePx0YhziBYpEVsEf', title, company, 'applied');
+    console.log('Title: ', title, 'Compnay: ', company, 'JobLink: ', jobLink);
+    addApplication('X7piePx0YhziBYpEVsEf', title, company, 'applied', jobLink);
     //getApplied('X7piePx0YhziBYpEVsEf');
     props.closeForm();
   };
@@ -117,6 +118,14 @@ export function AddApplicationForm(props) {
         variant='filled'
         color='primary'
         onChange={(event) => setCompany(event.target.value)}
+      />
+      <TextField
+        required
+        id='jobLink'
+        label='Job Link'
+        variant='filled'
+        color='primary'
+        onChange={(event) => setJobLink(event.target.value)}
       />
       <Button
         type='submit'
