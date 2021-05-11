@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     height: 700,
     width: 300,
   },
+  columnHeading: {
+    backgroundColor: 'lightGray',
+  },
   formBody: {
     width: 400,
     margin: 'auto',
@@ -76,22 +79,24 @@ function JobBoard() {
             return (
               <Grid item key={index}>
                 <Paper className={classes.paper}>
-                  {status}
-                  <Grid className={classes.jobCount}>
-                    <Typography>
-                      {allApplications.filter((application) => {
-                        return application.status === status.toLowerCase();
-                      }).length + ' jobs'}
-                    </Typography>
-                  </Grid>
-                  <Grid>
-                    <Button
-                      color='primary'
-                      variant='contained'
-                      onClick={handleOpenApplicationForm}
-                    >
-                      Add Application <AddIcon />
-                    </Button>
+                  <Grid className={classes.columnHeading}>
+                    {status}
+                    <Grid className={classes.jobCount}>
+                      <Typography>
+                        {allApplications.filter((application) => {
+                          return application.status === status.toLowerCase();
+                        }).length + ' jobs'}
+                      </Typography>
+                    </Grid>
+                    <Grid>
+                      <Button
+                        color='primary'
+                        variant='contained'
+                        onClick={handleOpenApplicationForm}
+                      >
+                        Add Application <AddIcon />
+                      </Button>
+                    </Grid>
                   </Grid>
 
                   {allApplications
