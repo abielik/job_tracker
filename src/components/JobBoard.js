@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Modal from '@material-ui/core/Modal';
+import Typography from '@material-ui/core/Typography';
 
 import { getAllApplications } from '../firebase/getAllApplications';
 import AddApplicationForm from './AddApplicationForm';
@@ -76,6 +77,13 @@ function JobBoard() {
               <Grid item key={index}>
                 <Paper className={classes.paper}>
                   {status}
+                  <Grid className={classes.jobCount}>
+                    <Typography>
+                      {allApplications.filter((application) => {
+                        return application.status === status.toLowerCase();
+                      }).length + ' jobs'}
+                    </Typography>
+                  </Grid>
                   <Grid>
                     <Button
                       color='primary'
