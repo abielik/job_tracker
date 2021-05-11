@@ -62,14 +62,14 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
 
-          <Button
+          {/* <Button
             className={classes.title}
             variant='contained'
             color='inherit'
             onClick={handleOpenApplicationForm}
           >
             Add Application
-          </Button>
+          </Button> */}
           <Modal
             open={openApplicationForm}
             onClose={handleCloseApplicationForm}

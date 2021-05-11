@@ -5,6 +5,8 @@ import JobCard from './JobCard';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
 
 import { getAllApplications } from '../firebase/getAllApplications';
 
@@ -43,6 +45,11 @@ function JobBoard() {
               <Grid item key={index}>
                 <Paper className={classes.paper}>
                   {status}
+                  <Grid>
+                    <Button color='primary' variant='contained'>
+                      Add Application <AddIcon />
+                    </Button>
+                  </Grid>
 
                   {allApplications
                     .filter((application) => {
