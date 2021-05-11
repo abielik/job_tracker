@@ -7,7 +7,7 @@ export async function addApplication(
   userId,
   title,
   company,
-  // dateApplied,
+  dateApplied,
   status,
   jobLink
 ) {
@@ -21,7 +21,7 @@ export async function addApplication(
     await applicationsCollectionRef.add({
       title,
       company,
-      // dateApplied,
+      dateApplied,
       status,
       jobLink,
     });

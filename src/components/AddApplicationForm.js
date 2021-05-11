@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -20,78 +20,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// class AddApplicationForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   handleChange(event) {
-//     this.setState({
-//       [event.target.name]: event.target.value,
-//     });
-//   }
-
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     console.log('state:,', this.state);
-
-//     addApplication(
-//       'X7piePx0YhziBYpEVsEf',
-//       this.state.title,
-//       this.state.company,
-//       'applied'
-//     );
-//     getApplied('X7piePx0YhziBYpEVsEf');
-//     this.props.closeForm();
-//   }
-
-//   render() {
-//     //const classes = useStyles();
-//     return (
-//       <form
-//         // className={classes.root}
-//         noValidate
-//         autoComplete='off'
-//         onSubmit={this.handleSubmit}
-//       >
-//         <TextField
-//           required
-//           name='title'
-//           id='title'
-//           label='Title'
-//           variant='filled'
-//           color='primary'
-//           onChange={this.handleChange}
-//         />
-//         <TextField
-//           required
-//           name='company'
-//           id='company'
-//           label='Company'
-//           variant='filled'
-//           color='primary'
-//           onChange={this.handleChange}
-//         />
-//         <Fab type='submit' color='primary' aria-label='add'>
-//           <AddIcon />
-//         </Fab>
-//       </form>
-//     );
-//   }
-// }
-
 export function AddApplicationForm(props) {
   const classes = useStyles();
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
   const [jobLink, setJobLink] = useState('');
+  //const [dateApplied, setDateApplied] = useState('');
+
+  const todaysDate = new Date();
+  const dateApplied = `Applied ${
+    todaysDate.getMonth() + 1
+  }/${todaysDate.getDate()}/${todaysDate.getFullYear()}`;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Title: ', title, 'Compnay: ', company, 'JobLink: ', jobLink);
-    addApplication('X7piePx0YhziBYpEVsEf', title, company, 'applied', jobLink);
+
+    console.log(
+      'Title: ',
+      title,
+      'Compnay: ',
+      company,
+      'JobLink: ',
+      jobLink,
+      'dateApplied: ',
+      dateApplied
+    );
+    addApplication(
+      'X7piePx0YhziBYpEVsEf',
+      title,
+      company,
+      dateApplied,
+      'applied',
+      jobLink
+    );
     //getApplied('X7piePx0YhziBYpEVsEf');
     props.closeForm();
   };

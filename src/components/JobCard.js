@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 function JobCard(props) {
   const classes = useStyles();
-  const { title, company, timeStamp, jobLink } = props;
+  const { title, company, dateApplied, jobLink } = props;
 
   const preventDefault = (event) => event.preventDefault();
   return (
@@ -41,7 +41,7 @@ function JobCard(props) {
             {company}
           </Typography>
           <Typography variant='body2' component='p'>
-            {timeStamp}
+            {dateApplied}
           </Typography>
           <Typography>
             <Link href={jobLink} onClick={preventDefault}>

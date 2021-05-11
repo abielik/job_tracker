@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import JobCard from './Card';
+import JobCard from './JobCard';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -54,7 +54,7 @@ function JobBoard() {
                           key={index}
                           title={filteredApplication.title}
                           company={filteredApplication.company}
-                          timeStamp={filteredApplication.timeStamp}
+                          dateApplied={filteredApplication.dateApplied}
                           jobLink={filteredApplication.jobLink}
                         />
                       );
