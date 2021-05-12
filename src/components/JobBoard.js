@@ -5,13 +5,10 @@ import JobCard from './JobCard';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 
 import { getAllApplications } from '../firebase/getAllApplications';
-import AddApplicationForm from './AddApplicationForm';
+import DialogBox from './DialogBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,21 +35,6 @@ function JobBoard() {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
-  const [openApplicationForm, setOpenApplicationForm] = useState(false);
-
-  const handleOpenApplicationForm = () => {
-    setOpenApplicationForm(true);
-  };
-
-  const handleCloseApplicationForm = () => {
-    setOpenApplicationForm(false);
-  };
-
-  const body = (
-    <div className={classes.formBody}>
-      <AddApplicationForm closeForm={handleCloseApplicationForm} />
-    </div>
-  );
 
   useEffect(() => {
     getAllApplications('X7piePx0YhziBYpEVsEf')
@@ -69,12 +51,6 @@ function JobBoard() {
     <Grid container className={classes.root} spacing={2}>
       <Grid item sm={12}>
         <Grid container justify='center' spacing={2}>
-          <Modal
-            open={openApplicationForm}
-            onClose={handleCloseApplicationForm}
-          >
-            {body}
-          </Modal>
           {jobStatuses.map((status, index) => {
             return (
               <Grid item key={index}>
@@ -89,13 +65,7 @@ function JobBoard() {
                       </Typography>
                     </Grid>
                     <Grid>
-                      <Button
-                        color='primary'
-                        variant='contained'
-                        onClick={handleOpenApplicationForm}
-                      >
-                        Add Application <AddIcon />
-                      </Button>
+                      <DialogBox />
                     </Grid>
                   </Grid>
 
