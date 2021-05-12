@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -8,9 +9,9 @@ import { addApplication } from '../firebase/addApplication';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    '& .MuiFormControl-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '80%',
     },
   },
 }));
@@ -57,38 +58,42 @@ export function AddApplicationForm(props) {
       autoComplete='off'
       onSubmit={handleSubmit}
     >
-      <TextField
-        required
-        id='title'
-        label='Title'
-        variant='filled'
-        color='primary'
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      <TextField
-        required
-        id='company'
-        label='Company'
-        variant='filled'
-        color='primary'
-        onChange={(event) => setCompany(event.target.value)}
-      />
-      <TextField
-        required
-        id='jobLink'
-        label='Job Link'
-        variant='filled'
-        color='primary'
-        onChange={(event) => setJobLink(event.target.value)}
-      />
-      <Button
-        type='submit'
-        color='primary'
-        variant='contained'
-        aria-label='add'
-      >
-        Save <AddIcon />
-      </Button>
+      <Grid container>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id='title'
+            label='Title'
+            variant='filled'
+            color='primary'
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <TextField
+            required
+            id='company'
+            label='Company'
+            variant='filled'
+            color='primary'
+            onChange={(event) => setCompany(event.target.value)}
+          />
+          <TextField
+            required
+            id='jobLink'
+            label='Job Link'
+            variant='filled'
+            color='primary'
+            onChange={(event) => setJobLink(event.target.value)}
+          />
+        </Grid>
+        <Button
+          type='submit'
+          color='primary'
+          variant='contained'
+          aria-label='add'
+        >
+          Save <AddIcon />
+        </Button>
+      </Grid>
     </form>
   );
 }
