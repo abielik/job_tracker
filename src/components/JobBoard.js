@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
+    overflow: 'auto',
     height: 700,
     width: 300,
   },
