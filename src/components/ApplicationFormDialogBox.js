@@ -56,7 +56,7 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function DialogBox() {
+export default function ApplicationFormDialogBox() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

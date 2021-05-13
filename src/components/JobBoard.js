@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import { getAllApplications } from '../firebase/getAllApplications';
-import DialogBox from './DialogBox';
+import ApplicationFormDialogBox from './ApplicationFormDialogBox';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +58,7 @@ function JobBoard() {
                       </Typography>
                     </Grid>
                     <Grid>
-                      <DialogBox />
+                      <ApplicationFormDialogBox />
                     </Grid>
                   </Grid>
                 </Paper>
