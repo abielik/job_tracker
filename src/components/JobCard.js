@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 //import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+
 import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 290,
+    // minWidth: 290,
+    justifyContent: 'space-between',
   },
 
   title: {

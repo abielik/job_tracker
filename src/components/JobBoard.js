@@ -22,14 +22,6 @@ const useStyles = makeStyles((theme) => ({
   columnHeading: {
     backgroundColor: 'lightGray',
   },
-  formBody: {
-    width: 400,
-    margin: 'auto',
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
 }));
 
 function JobBoard() {
@@ -55,8 +47,8 @@ function JobBoard() {
           {jobStatuses.map((status, index) => {
             return (
               <Grid item key={index}>
-                <Paper className={classes.paper}>
-                  <Grid className={classes.columnHeading}>
+                <Paper className={classes.columnHeading}>
+                  <Grid>
                     {status}
                     <Grid className={classes.jobCount}>
                       <Typography>
@@ -69,7 +61,8 @@ function JobBoard() {
                       <DialogBox />
                     </Grid>
                   </Grid>
-
+                </Paper>
+                <Paper className={classes.paper}>
                   {allApplications
                     .filter((application) => {
                       return application.status === status.toLowerCase();
