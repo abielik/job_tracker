@@ -22,3 +22,15 @@ export async function getAllApplications(userId) {
     console.log('Origin: getApplications.getApplications(): ', err);
   }
 }
+
+export async function listenForNewApplications(userId, observer) {
+  try {
+    return firestore
+      .collection('users')
+      .doc(userId)
+      .collection('Job Applications')
+      .onSnapshot(observer);
+  } catch (err) {
+    console.log('Origin: getApplications.listenForNewApplications(): ', err);
+  }
+}

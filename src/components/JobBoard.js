@@ -7,7 +7,10 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { getAllApplications } from '../firebase/getAllApplications';
+import {
+  getAllApplications,
+  listenForNewApplications,
+} from '../firebase/getAllApplications';
 import ApplicationFormDialogBox from './ApplicationFormDialogBox';
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +42,18 @@ function JobBoard() {
         window.alert(error.message);
       });
   }, []);
+
+  useEffect(() => {
+    listenForNewApplications('X7piePx0YhziBYpEVsEf', {
+      next: (querySnapshot) => {
+        const updatedApplicationsList = querySnapshot.docs.map((snapshot) => {
+          return snapshot.data();
+        });
+        setAllApplications(updatedApplicationsList);
+      },
+      error: () => console.log('2nd use effect error'),
+    });
+  }, [setAllApplications]);
 
   return (
     <Grid container className={classes.root} spacing={2}>
