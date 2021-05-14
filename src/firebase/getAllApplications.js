@@ -23,7 +23,7 @@ export async function getAllApplications(userId) {
   }
 }
 
-export async function listenForNewApplications(userId, observer) {
+export function listenForNewApplications(userId, observer) {
   try {
     return firestore
       .collection('users')
