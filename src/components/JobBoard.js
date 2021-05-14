@@ -32,6 +32,7 @@ function JobBoard() {
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
 
+  // this effect only runs when component initially mounts
   useEffect(() => {
     getAllApplications('X7piePx0YhziBYpEVsEf')
       .then((applications) => {
@@ -43,6 +44,7 @@ function JobBoard() {
       });
   }, []);
 
+  // this effect will run when applications state changes
   useEffect(() => {
     listenForNewApplications('X7piePx0YhziBYpEVsEf', {
       next: (querySnapshot) => {
