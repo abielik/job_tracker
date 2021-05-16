@@ -1,11 +1,15 @@
-import firebase from '../firebase/index';
-import 'firebase/auth';
+import React from 'react';
 
-const auth = firebase.auth();
+import AuthenticationButton from './AuthenticationButton';
+import { signInWithGoogle } from '../firebase/authentication';
 
 export default function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  };
+  return (
+    <AuthenticationButton
+      onClick={signInWithGoogle}
+      text='Sign In'
+      color='inherit'
+      variant='contained'
+    />
+  );
 }

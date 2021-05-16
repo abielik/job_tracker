@@ -1,12 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 //import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import SignIn from './SignIn';
+import SignOut from './SignOut';
+
+// TODO::: grab USER info. implement toggle between log in / out buttons
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +41,8 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
 
-          <Button color='inherit'>Login</Button>
+          <SignIn />
+          <SignOut />
         </Toolbar>
       </AppBar>
     </div>
