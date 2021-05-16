@@ -8,8 +8,8 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import AddIcon from '@material-ui/icons/Add';
 
+import ActionButton from './ActionButton';
 import AddApplicationForm from './AddApplicationForm';
 
 const styles = (theme) => ({
@@ -68,8 +68,8 @@ export default function ApplicationFormDialogBox() {
 
   return (
     <div>
-      <Button variant='contained' color='primary' onClick={handleClickOpen}>
-        Add Application <AddIcon />
+      <Button color='primary' onClick={handleClickOpen}>
+        <ActionButton text='Add Application ' />
       </Button>
       <Dialog
         onClose={handleClose}
@@ -84,7 +84,7 @@ export default function ApplicationFormDialogBox() {
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose} color='primary'>
-            Save changes
+            <ActionButton text='Save changes' />
           </Button>
         </DialogActions>
       </Dialog>
