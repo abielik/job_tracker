@@ -68,9 +68,8 @@ export default function ApplicationFormDialogBox() {
 
   return (
     <div>
-      <Button color='primary' onClick={handleClickOpen}>
-        <ActionButton text='Add Application ' />
-      </Button>
+      <ActionButton onClick={handleClickOpen} text='Add Application ' />
+
       <Dialog
         onClose={handleClose}
         aria-labelledby='customized-dialog-title'
@@ -83,8 +82,8 @@ export default function ApplicationFormDialogBox() {
           <AddApplicationForm handleClose={handleClose} />
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color='primary'>
-            <ActionButton text='Save changes' />
+          <Button onClick={handleClose} color='secondary'>
+            Cancel
           </Button>
         </DialogActions>
       </Dialog>

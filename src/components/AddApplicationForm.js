@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 import { addApplication } from '../firebase/addApplication';
+import ActionButton from './ActionButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,6 +84,7 @@ export function AddApplicationForm(props) {
             onChange={(event) => setJobLink(event.target.value)}
           />
         </Grid>
+        <ActionButton text='Save' onClick={handleSubmit} />
       </Grid>
     </form>
   );
