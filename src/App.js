@@ -1,21 +1,15 @@
 import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import JobBoard from './components/JobBoard';
+import Routes from './Routes';
 
 function App() {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            <Navbar />
-            <JobBoard />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <main className='App'>
+        <Routes />
+      </main>
+    </BrowserRouter>
   );
 }
 

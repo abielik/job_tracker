@@ -8,7 +8,7 @@ export default function SignIn() {
     <AuthenticationButton
       onClick={signInWithGoogle}
       text='Sign In'
-      color='inherit'
+      color='primary'
       variant='contained'
     />
   );
