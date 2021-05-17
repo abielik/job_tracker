@@ -27,10 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function JobBoard() {
+function JobBoard(props) {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
+  console.log('props: ', props);
 
   // this effect only runs when component initially mounts
   useEffect(() => {

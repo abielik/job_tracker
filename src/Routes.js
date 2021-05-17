@@ -26,7 +26,7 @@ export default function Routes() {
             <Route
               exact
               path='/job-board'
-              render={(routeProps) => <JobBoard {...routeProps} />}
+              render={(routeProps) => <JobBoard {...routeProps} user={user} />}
             />
           </Switch>
           <Redirect from='/' to='/job-board' />

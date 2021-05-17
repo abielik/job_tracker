@@ -3,7 +3,7 @@ import 'firebase/auth';
 
 const auth = firebase.auth();
 
-function signInWithGoogle() {
+export function signInWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth
     .signInWithPopup(provider)
@@ -14,7 +14,7 @@ function signInWithGoogle() {
 }
 
 //add redirect
-function signOut() {
+export function signOut() {
   auth
     .signOut()
     .then(() => {
@@ -24,5 +24,3 @@ function signOut() {
       window.alert(error.message);
     });
 }
-
-export { signInWithGoogle, signOut };

@@ -12,7 +12,6 @@ export async function addApplication(
   jobLink
 ) {
   try {
-    console.log('hello from addApplication()!!');
     const applicationsCollectionRef = firestore
       .collection('users')
       .doc(userId)
