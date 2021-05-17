@@ -56,7 +56,7 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function ApplicationFormDialogBox() {
+export default function ApplicationFormDialogBox(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -79,7 +79,7 @@ export default function ApplicationFormDialogBox() {
           Add Job Application
         </DialogTitle>
         <DialogContent dividers>
-          <AddApplicationForm handleClose={handleClose} />
+          <AddApplicationForm handleClose={handleClose} userId={props.userId} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='secondary'>

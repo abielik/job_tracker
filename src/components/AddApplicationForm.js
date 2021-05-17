@@ -40,7 +40,7 @@ export function AddApplicationForm(props) {
       dateApplied
     );
     addApplication(
-      'X7piePx0YhziBYpEVsEf',
+      props.userId,
       title,
       company,
       dateApplied,

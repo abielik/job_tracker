@@ -17,7 +17,7 @@ export async function addApplication(
       .doc(userId)
       .collection('Job Applications');
 
-    await applicationsCollectionRef.add({
+    await applicationsCollectionRef.doc(userId).set({
       title,
       company,
       dateApplied,

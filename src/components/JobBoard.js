@@ -31,11 +31,10 @@ function JobBoard(props) {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
-  console.log('props: ', props);
 
   // this effect only runs when component initially mounts
   useEffect(() => {
-    getAllApplications('X7piePx0YhziBYpEVsEf')
+    getAllApplications(props.user.uid)
       .then((applications) => {
         setAllApplications(applications);
       })
@@ -43,7 +42,7 @@ function JobBoard(props) {
         console.warn(error);
         window.alert(error.message);
       });
-  }, []);
+  }, [props.user.uid]);
 
   // this effect will run when applications state changes
   useEffect(() => {
@@ -54,15 +53,17 @@ function JobBoard(props) {
       setAllApplications(updatedApplicationsList);
     };
 
-    const onError = () => {
-      console.log('2nd use effect error');
-    };
-
-    listenForNewApplications('X7piePx0YhziBYpEVsEf', {
+    const destroyListener = listenForNewApplications(props.user.uid, {
       next: onSuccess,
-      error: onError,
+      error: () => {
+        console.warn('firestore snapshot listener error');
+      },
     });
-  }, []);
+
+    return () => {
+      destroyListener();
+    };
+  }, [props.user.uid]);
 
   return (
     <Grid container className={classes.root} spacing={2}>
@@ -82,7 +83,7 @@ function JobBoard(props) {
                       </Typography>
                     </Grid>
                     <Grid>
-                      <ApplicationFormDialogBox />
+                      <ApplicationFormDialogBox userId={props.user.uid} />
                     </Grid>
                   </Grid>
                 </Paper>
