@@ -46,16 +46,22 @@ function JobBoard() {
 
   // this effect will run when applications state changes
   useEffect(() => {
+    const onSuccess = (snapshot) => {
+      const updatedApplicationsList = snapshot.docs.map((snapshot) => {
+        return snapshot.data();
+      });
+      setAllApplications(updatedApplicationsList);
+    };
+
+    const onError = () => {
+      console.log('2nd use effect error');
+    };
+
     listenForNewApplications('X7piePx0YhziBYpEVsEf', {
-      next: (querySnapshot) => {
-        const updatedApplicationsList = querySnapshot.docs.map((snapshot) => {
-          return snapshot.data();
-        });
-        setAllApplications(updatedApplicationsList);
-      },
-      error: () => console.log('2nd use effect error'),
+      next: onSuccess,
+      error: onError,
     });
-  }, [setAllApplications]);
+  }, []);
 
   return (
     <Grid container className={classes.root} spacing={2}>
