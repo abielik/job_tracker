@@ -30,9 +30,15 @@ function JobCard(props) {
   const classes = useStyles();
   const { title, company, dateApplied, jobLink } = props;
 
+  const onCardClick = () => {
+    window.alert(
+      `Title: ${title}. Company: ${company}. You ${dateApplied}. Soon you will be able to edit this card.`
+    );
+  };
+
   const preventDefault = (event) => event.preventDefault();
   return (
-    <Card className={classes.root} variant='outlined'>
+    <Card className={classes.root} variant='outlined' onClick={onCardClick}>
       <CardActionArea>
         <CardContent>
           <Typography variant='h5' component='h2'>
