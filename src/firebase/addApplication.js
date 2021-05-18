@@ -15,9 +15,9 @@ export async function addApplication(
     const applicationsCollectionRef = firestore
       .collection('users')
       .doc(userId)
-      .collection('Job Applications');
+      .collection('applications');
 
-    await applicationsCollectionRef.doc(userId).set({
+    await applicationsCollectionRef.add({
       title,
       company,
       dateApplied,

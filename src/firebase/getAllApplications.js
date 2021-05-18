@@ -8,7 +8,7 @@ export async function getAllApplications(userId) {
     const applicationsRef = firestore
       .collection('users')
       .doc(userId)
-      .collection('Job Applications');
+      .collection('applications');
 
     // wait for firestore to finish loading
     const snapshot = await applicationsRef.get();
@@ -28,7 +28,7 @@ export function listenForNewApplications(userId, observer) {
     return firestore
       .collection('users')
       .doc(userId)
-      .collection('Job Applications')
+      .collection('applications')
       .onSnapshot(observer);
   } catch (err) {
     console.log('Origin: getApplications.listenForNewApplications(): ', err);
