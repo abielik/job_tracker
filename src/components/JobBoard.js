@@ -83,7 +83,10 @@ function JobBoard(props) {
                       </Typography>
                     </Grid>
                     <Grid>
-                      <ApplicationFormDialogBox userId={props.user.uid} />
+                      <ApplicationFormDialogBox
+                        userId={props.user.uid}
+                        text='Add Application'
+                      />
                     </Grid>
                   </Grid>
                 </Paper>

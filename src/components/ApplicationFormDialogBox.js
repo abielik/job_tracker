@@ -66,9 +66,10 @@ export default function ApplicationFormDialogBox(props) {
     setOpen(false);
   };
 
+  const { userId, text } = props;
   return (
     <div>
-      <ActionButton onClick={handleClickOpen} text='Add Application ' />
+      <ActionButton onClick={handleClickOpen} text={text} />
 
       <Dialog
         onClose={handleClose}
@@ -76,10 +77,10 @@ export default function ApplicationFormDialogBox(props) {
         open={open}
       >
         <DialogTitle id='customized-dialog-title' onClose={handleClose}>
-          Add Job Application
+          {text}
         </DialogTitle>
         <DialogContent dividers>
-          <AddApplicationForm handleClose={handleClose} userId={props.userId} />
+          <AddApplicationForm handleClose={handleClose} userId={userId} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='secondary'>
