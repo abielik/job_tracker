@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import { addApplication } from '../firebase/addApplication';
 import ActionButton from './ActionButton';
 
+import firebase from '../firebase/index';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiFormControl-root': {
@@ -21,10 +23,9 @@ export function AddApplicationForm(props) {
   const [company, setCompany] = useState('');
   const [jobLink, setJobLink] = useState('');
 
-  const todaysDate = new Date();
-  const dateApplied = `Applied ${
-    todaysDate.getMonth() + 1
-  }/${todaysDate.getDate()}/${todaysDate.getFullYear()}`;
+  const dateApplied = `Applied on ${new Date(
+    firebase.firestore.Timestamp.now().seconds * 1000
+  ).toLocaleDateString()}`;
 
   const handleSubmit = (event) => {
     event.preventDefault();
