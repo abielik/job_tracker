@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 
+import EditApplicationForm from './EditApplicationForm';
+
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: 'relative',
@@ -39,6 +41,8 @@ export default function EditJobCardDialogBox(props) {
     setOpen(false);
   };
 
+  const { displayTitle, title, company, jobLink } = props;
+
   return (
     <div>
       <Button variant='outlined' color='primary' onClick={handleClickOpen}>
@@ -61,25 +65,18 @@ export default function EditJobCardDialogBox(props) {
               <CloseIcon />
             </IconButton>
             <Typography variant='h6' className={classes.title}>
-              {props.displayTitle}
+              {displayTitle}
             </Typography>
             <Button autoFocus color='inherit' onClick={handleClose}>
               save
             </Button>
           </Toolbar>
         </AppBar>
-        <List>
-          <ListItem button>
-            <ListItemText primary='Phone ringtone' secondary='Titania' />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText
-              primary='Default notification ringtone'
-              secondary='Tethys'
-            />
-          </ListItem>
-        </List>
+        <EditApplicationForm
+          title={title}
+          company={company}
+          jobLink={jobLink}
+        />
       </Dialog>
     </div>
   );

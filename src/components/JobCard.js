@@ -51,7 +51,12 @@ function JobCard(props) {
               Go to Job Post
             </Link>
           </Typography>
-          <EditJobCardDialogBox displayTitle={`${title} @ ${company}`} />
+          <EditJobCardDialogBox
+            displayTitle={`${title} @ ${company}`}
+            title={title}
+            company={company}
+            jobLink={jobLink}
+          />
         </CardContent>
       </CardActionArea>
     </Card>
