@@ -19,7 +19,7 @@ export async function updateApplication(
       .collection('applications')
       .doc(applicationId);
 
-    return applicationDocRef.update({
+    return await applicationDocRef.update({
       title,
       company,
       status,
