@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 
 import Link from '@material-ui/core/Link';
 
+import EditJobCardDialogBox from './EditJobCardDialogBox';
+
 const useStyles = makeStyles({
   root: {
     // minWidth: 290,
@@ -30,15 +32,9 @@ function JobCard(props) {
   const classes = useStyles();
   const { title, company, dateApplied, jobLink } = props;
 
-  const onCardClick = () => {
-    window.alert(
-      `Title: ${title}. Company: ${company}. You ${dateApplied}. Soon you will be able to edit this card.`
-    );
-  };
-
   const preventDefault = (event) => event.preventDefault();
   return (
-    <Card className={classes.root} variant='outlined' onClick={onCardClick}>
+    <Card className={classes.root} variant='outlined'>
       <CardActionArea>
         <CardContent>
           <Typography variant='h5' component='h2'>
@@ -55,6 +51,7 @@ function JobCard(props) {
               Go to Job Post
             </Link>
           </Typography>
+          <EditJobCardDialogBox displayTitle={`${title} @ ${company}`} />
         </CardContent>
       </CardActionArea>
     </Card>

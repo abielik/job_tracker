@@ -27,7 +27,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-export default function EditJobCardDialogBox() {
+export default function EditJobCardDialogBox(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -42,7 +42,7 @@ export default function EditJobCardDialogBox() {
   return (
     <div>
       <Button variant='outlined' color='primary' onClick={handleClickOpen}>
-        Open full-screen dialog
+        Open
       </Button>
       <Dialog
         fullScreen
@@ -61,7 +61,7 @@ export default function EditJobCardDialogBox() {
               <CloseIcon />
             </IconButton>
             <Typography variant='h6' className={classes.title}>
-              Sound
+              {props.displayTitle}
             </Typography>
             <Button autoFocus color='inherit' onClick={handleClose}>
               save
