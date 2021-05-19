@@ -85,7 +85,7 @@ export function AddApplicationForm(props) {
             onChange={(event) => setJobLink(event.target.value)}
           />
         </Grid>
-        <ActionButton text='Save' onClick={handleSubmit} />
+        <ActionButton text='Save' />
       </Grid>
     </form>
   );

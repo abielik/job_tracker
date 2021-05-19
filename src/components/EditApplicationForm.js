@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-import { addApplication } from '../firebase/addApplication';
+import { updateApplication } from '../firebase/updateApplication';
 import ActionButton from './ActionButton';
+import StatusSelector from './StatusSelector';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,15 +18,34 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EditApplicationForm(props) {
   const classes = useStyles();
-  const [title, setTitle] = useState('');
-  const [company, setCompany] = useState('');
-  const [jobLink, setJobLink] = useState('');
+  const [title, setTitle] = useState(props.title);
+  const [company, setCompany] = useState(props.company);
+  const [jobLink, setJobLink] = useState(props.jobLink);
+  const [status, setStatus] = useState(props.status);
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log('Title: ', title, 'Compnay: ', company, 'JobLink: ', jobLink);
-    addApplication(props.userId, title, company, jobLink);
+    console.log(
+      'UPDATED::: Title: ',
+      title,
+      'Compnay: ',
+      company,
+      'JobLink: ',
+      jobLink,
+      'description: ',
+      description
+    );
+    updateApplication(
+      props.userId,
+      props.applicationId,
+      title,
+      company,
+      status,
+      jobLink,
+      description
+    );
     props.handleClose();
   };
 
@@ -40,7 +60,7 @@ export default function EditApplicationForm(props) {
         <Grid item xs={12}>
           <TextField
             required
-            defaultValue={props.title}
+            defaultValue={title}
             id='title'
             label='Title'
             variant='filled'
@@ -49,7 +69,7 @@ export default function EditApplicationForm(props) {
           />
           <TextField
             required
-            defaultValue={props.company}
+            defaultValue={company}
             id='company'
             label='Company'
             variant='filled'
@@ -58,15 +78,28 @@ export default function EditApplicationForm(props) {
           />
           <TextField
             required
-            defaultValue={props.jobLink}
+            defaultValue={jobLink}
             id='jobLink'
             label='Job Link'
             variant='filled'
             color='primary'
             onChange={(event) => setJobLink(event.target.value)}
           />
+          <StatusSelector
+            status={status}
+            onChange={(event) => setStatus(event.target.value)}
+          />
+          <TextField
+            multiline
+            variant='filled'
+            color='primary'
+            id='description'
+            label='Description'
+            rows={4}
+            onChange={(event) => setDescription(event.target.value)}
+          />
         </Grid>
-        <ActionButton text='Save' onClick={handleSubmit} />
+        <ActionButton text='Save' />
       </Grid>
     </form>
   );

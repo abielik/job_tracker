@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 
 function JobCard(props) {
   const classes = useStyles();
-  const { title, company, dateApplied, jobLink } = props;
+  const { title, company, dateApplied, jobLink, status } = props;
 
   const preventDefault = (event) => event.preventDefault();
   return (
@@ -56,6 +56,7 @@ function JobCard(props) {
             title={title}
             company={company}
             jobLink={jobLink}
+            status={status}
           />
         </CardContent>
       </CardActionArea>

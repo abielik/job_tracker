@@ -103,6 +103,7 @@ function JobBoard(props) {
                           company={filteredApplication.company}
                           dateApplied={filteredApplication.dateApplied}
                           jobLink={filteredApplication.jobLink}
+                          status={filteredApplication.status}
                         />
                       );
                     })}
