@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   columnHeading: {
     backgroundColor: 'lightGray',
   },
+  gridContainer: {
+    paddingBottom: '10px',
+    // backgroundColor: 'lightGray',
+  },
 }));
 
 function JobBoard(props) {
@@ -98,17 +102,24 @@ function JobBoard(props) {
                     })
                     .map((filteredApplication) => {
                       return (
-                        <JobCard
+                        <Grid
+                          container
                           key={filteredApplication.id}
-                          title={filteredApplication.title}
-                          company={filteredApplication.company}
-                          dateApplied={filteredApplication.dateApplied}
-                          jobLink={filteredApplication.jobLink}
-                          status={filteredApplication.status}
-                          description={filteredApplication.description}
-                          userId={props.user.uid}
-                          applicationId={filteredApplication.id}
-                        />
+                          item
+                          xs={12}
+                          className={classes.gridContainer}
+                        >
+                          <JobCard
+                            title={filteredApplication.title}
+                            company={filteredApplication.company}
+                            dateApplied={filteredApplication.dateApplied}
+                            jobLink={filteredApplication.jobLink}
+                            status={filteredApplication.status}
+                            description={filteredApplication.description}
+                            userId={props.user.uid}
+                            applicationId={filteredApplication.id}
+                          />
+                        </Grid>
                       );
                     })}
                 </Paper>

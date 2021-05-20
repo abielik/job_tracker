@@ -12,19 +12,21 @@ import EditJobCardDialogBox from './EditJobCardDialogBox';
 
 const useStyles = makeStyles({
   root: {
-    // minWidth: 290,
-    justifyContent: 'space-between',
+    height: '180px',
+    width: '300px',
+    backgroundColor: 'lightBlue',
   },
 
+  content: {
+    textAlign: 'left',
+  },
   title: {
-    fontSize: 14,
+    fontWeight: 'bold',
   },
-  pos: {
+
+  company: {
     marginBottom: 12,
-  },
-  gridContainer: {
-    marginLeft: '20px',
-    marginRight: '20px',
+    lineHeight: 1.8,
   },
 });
 
@@ -41,25 +43,25 @@ function JobCard(props) {
     applicationId,
   } = props;
 
-  const preventDefault = (event) => event.preventDefault();
-
   return (
     <Card className={classes.root} variant='outlined'>
       <CardActionArea>
-        <CardContent>
-          <Typography variant='h5' component='h2'>
+        <CardContent className={classes.content}>
+          <Typography variant='h6' noWrap>
             {title}
           </Typography>
-          <Typography className={classes.pos} color='textSecondary'>
+          <Typography
+            className={classes.company}
+            variant='subtitle2'
+            color='textSecondary'
+          >
             {company}
           </Typography>
           <Typography variant='body2' component='p'>
             {dateApplied}
           </Typography>
           <Typography>
-            <Link href={jobLink} onClick={preventDefault}>
-              Go to Job Post
-            </Link>
+            <Link href={jobLink}>Go to Job Post</Link>
           </Typography>
           <EditJobCardDialogBox
             displayTitle={`${title} @ ${company}`}

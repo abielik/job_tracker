@@ -55,7 +55,12 @@ export default function EditJobCardDialogBox(props) {
 
   return (
     <div>
-      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
+      <Button
+        fullWidth
+        variant='outlined'
+        color='primary'
+        onClick={handleClickOpen}
+      >
         Open
       </Button>
       <Dialog
