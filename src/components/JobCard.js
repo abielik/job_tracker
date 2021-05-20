@@ -43,6 +43,10 @@ function JobCard(props) {
     applicationId,
   } = props;
 
+  const handleLinkClick = () => {
+    window.open(jobLink, '_blank');
+  };
+
   return (
     <Card className={classes.root} variant='outlined'>
       <CardActionArea>
@@ -61,7 +65,7 @@ function JobCard(props) {
             {dateApplied}
           </Typography>
           <Typography>
-            <Link href={jobLink}>Go to Job Post</Link>
+            <Link onClick={handleLinkClick}>Go to Job Post</Link>
           </Typography>
           <EditJobCardDialogBox
             displayTitle={`${title} @ ${company}`}
