@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import { updateApplication } from '../firebase/updateApplication';
 import ActionButton from './ActionButton';
-import StatusSelector from './StatusSelector';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +35,9 @@ export default function EditApplicationForm(props) {
       'JobLink: ',
       jobLink,
       'description: ',
-      description
+      description,
+      'status: ',
+      status
     );
     updateApplication(
       props.userId,
@@ -48,7 +50,7 @@ export default function EditApplicationForm(props) {
     );
     props.handleClose();
   };
-
+  const statuses = ['Applied', 'Interviewing', 'Rejected'];
   return (
     <form
       className={classes.root}
@@ -64,7 +66,6 @@ export default function EditApplicationForm(props) {
             id='title'
             label='Title'
             variant='filled'
-            color='primary'
             onChange={(event) => setTitle(event.target.value)}
           />
           <TextField
@@ -73,7 +74,6 @@ export default function EditApplicationForm(props) {
             id='company'
             label='Company'
             variant='filled'
-            color='primary'
             onChange={(event) => setCompany(event.target.value)}
           />
           <TextField
@@ -82,17 +82,26 @@ export default function EditApplicationForm(props) {
             id='jobLink'
             label='Job Link'
             variant='filled'
-            color='primary'
             onChange={(event) => setJobLink(event.target.value)}
           />
-          <StatusSelector
-            status={status}
+          <TextField
+            select
+            id='status'
+            label='Select'
+            value={status}
+            variant='filled'
             onChange={(event) => setStatus(event.target.value)}
-          />
+          >
+            {statuses.map((status) => (
+              <MenuItem key={status.toLowerCase()} value={status.toLowerCase()}>
+                {status}
+              </MenuItem>
+            ))}
+          </TextField>
+
           <TextField
             multiline
             variant='filled'
-            color='primary'
             id='description'
             label='Description'
             rows={4}
