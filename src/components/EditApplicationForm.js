@@ -22,7 +22,7 @@ export default function EditApplicationForm(props) {
   const [company, setCompany] = useState(props.company);
   const [jobLink, setJobLink] = useState(props.jobLink);
   const [status, setStatus] = useState(props.status);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState(props.description || '');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -104,6 +104,7 @@ export default function EditApplicationForm(props) {
             variant='filled'
             id='description'
             label='Description'
+            value={description}
             rows={4}
             onChange={(event) => setDescription(event.target.value)}
           />
