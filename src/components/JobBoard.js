@@ -97,7 +97,6 @@ function JobBoard(props) {
                       return application.status === status.toLowerCase();
                     })
                     .map((filteredApplication) => {
-                      console.log(filteredApplication);
                       return (
                         <JobCard
                           key={filteredApplication.id}
@@ -106,6 +105,7 @@ function JobBoard(props) {
                           dateApplied={filteredApplication.dateApplied}
                           jobLink={filteredApplication.jobLink}
                           status={filteredApplication.status}
+                          docId={filteredApplication.id}
                         />
                       );
                     })}

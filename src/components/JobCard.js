@@ -30,9 +30,10 @@ const useStyles = makeStyles({
 
 function JobCard(props) {
   const classes = useStyles();
-  const { title, company, dateApplied, jobLink, status } = props;
+  const { title, company, dateApplied, jobLink, status, docId } = props;
 
   const preventDefault = (event) => event.preventDefault();
+
   return (
     <Card className={classes.root} variant='outlined'>
       <CardActionArea>
@@ -57,6 +58,7 @@ function JobCard(props) {
             company={company}
             jobLink={jobLink}
             status={status}
+            applicationId={docId}
           />
         </CardContent>
       </CardActionArea>
