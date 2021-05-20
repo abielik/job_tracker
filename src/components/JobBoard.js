@@ -105,7 +105,8 @@ function JobBoard(props) {
                           dateApplied={filteredApplication.dateApplied}
                           jobLink={filteredApplication.jobLink}
                           status={filteredApplication.status}
-                          docId={filteredApplication.id}
+                          userId={props.user.uid}
+                          applicationId={filteredApplication.id}
                         />
                       );
                     })}

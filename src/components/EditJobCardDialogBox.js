@@ -42,8 +42,15 @@ export default function EditJobCardDialogBox(props) {
     setOpen(false);
   };
 
-  const { displayTitle, title, company, jobLink, status, applicationId } =
-    props;
+  const {
+    displayTitle,
+    title,
+    company,
+    jobLink,
+    status,
+    userId,
+    applicationId,
+  } = props;
 
   return (
     <div>
@@ -78,6 +85,7 @@ export default function EditJobCardDialogBox(props) {
           title={title}
           company={company}
           jobLink={jobLink}
+          userId={userId}
           applicationId={applicationId}
           status={status}
           handleClose={handleClose}
