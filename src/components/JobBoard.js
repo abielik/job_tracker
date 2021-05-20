@@ -33,16 +33,16 @@ function JobBoard(props) {
   const [allApplications, setAllApplications] = useState([]);
 
   // this effect only runs when component initially mounts
-  useEffect(() => {
-    getAllApplications(props.user.uid)
-      .then((applications) => {
-        setAllApplications(applications);
-      })
-      .catch((error) => {
-        console.warn(error);
-        window.alert(error.message);
-      });
-  }, [props.user.uid]);
+  // useEffect(() => {
+  //   getAllApplications(props.user.uid)
+  //     .then((applications) => {
+  //       setAllApplications(applications);
+  //     })
+  //     .catch((error) => {
+  //       console.warn(error);
+  //       window.alert(error.message);
+  //     });
+  // }, [props.user.uid]);
 
   // this effect will run when applications state changes
   useEffect(() => {
