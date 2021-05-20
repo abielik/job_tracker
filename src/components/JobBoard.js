@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     paddingBottom: '10px',
-    backgroundColor: 'lightGray',
+    backgroundColor: '#282c34',
   },
 }));
 
