@@ -47,9 +47,10 @@ function JobBoard(props) {
   // this effect will run when applications state changes
   useEffect(() => {
     const onSuccess = (snapshot) => {
-      const updatedApplicationsList = snapshot.docs.map((snapshot) => {
-        return snapshot.data();
-      });
+      const updatedApplicationsList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
       setAllApplications(updatedApplicationsList);
     };
 
@@ -95,10 +96,11 @@ function JobBoard(props) {
                     .filter((application) => {
                       return application.status === status.toLowerCase();
                     })
-                    .map((filteredApplication, index) => {
+                    .map((filteredApplication) => {
+                      console.log(filteredApplication);
                       return (
                         <JobCard
-                          key={index}
+                          key={filteredApplication.id}
                           title={filteredApplication.title}
                           company={filteredApplication.company}
                           dateApplied={filteredApplication.dateApplied}
