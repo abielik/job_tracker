@@ -20,7 +20,7 @@ export default function Routes() {
       {user ? (
         <React.Fragment>
           <nav>
-            <Navbar />
+            <Navbar user={user} />
           </nav>
           <Switch>
             <Route
