@@ -3,15 +3,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
+
+import AddIcon from '@material-ui/icons/Add';
 
 import { updateApplication } from '../firebase/updateApplication';
-import ActionButton from './ActionButton';
+// import ActionButton from './ActionButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiFormControl-root': {
-      margin: theme.spacing(1),
-      width: '80%',
+      margin: theme.spacing(2),
+      width: '85%',
     },
   },
 }));
@@ -22,7 +25,7 @@ export default function EditApplicationForm(props) {
   const [company, setCompany] = useState(props.company);
   const [jobLink, setJobLink] = useState(props.jobLink);
   const [status, setStatus] = useState(props.status);
-  const [description, setDescription] = useState(props.description || '');
+  const [description, setDescription] = useState(props.description);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -58,8 +61,8 @@ export default function EditApplicationForm(props) {
       autoComplete='off'
       onSubmit={handleSubmit}
     >
-      <Grid container>
-        <Grid item xs={12}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
           <TextField
             required
             defaultValue={title}
@@ -68,6 +71,8 @@ export default function EditApplicationForm(props) {
             variant='filled'
             onChange={(event) => setTitle(event.target.value)}
           />
+        </Grid>
+        <Grid item xs={4}>
           <TextField
             required
             defaultValue={company}
@@ -76,14 +81,8 @@ export default function EditApplicationForm(props) {
             variant='filled'
             onChange={(event) => setCompany(event.target.value)}
           />
-          <TextField
-            required
-            defaultValue={jobLink}
-            id='jobLink'
-            label='Job Link'
-            variant='filled'
-            onChange={(event) => setJobLink(event.target.value)}
-          />
+        </Grid>
+        <Grid item xs={2}>
           <TextField
             select
             id='status'
@@ -98,7 +97,37 @@ export default function EditApplicationForm(props) {
               </MenuItem>
             ))}
           </TextField>
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            required
+            defaultValue={jobLink}
+            id='jobLink'
+            label='Job Link'
+            variant='filled'
+            onChange={(event) => setJobLink(event.target.value)}
+          />
+        </Grid>
 
+        <Grid item xs={4}>
+          <TextField
+            //defaultValue={company}
+            id='location'
+            label='Location'
+            variant='filled'
+            //onChange={(event) => setCompany(event.target.value)}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <TextField
+            //defaultValue={jobLink}
+            id='salary'
+            label='Salary'
+            variant='filled'
+            //onChange={(event) => setJobLink(event.target.value)}
+          />
+        </Grid>
+        <Grid item xs={6}>
           <TextField
             multiline
             variant='filled'
@@ -109,7 +138,11 @@ export default function EditApplicationForm(props) {
             onChange={(event) => setDescription(event.target.value)}
           />
         </Grid>
-        <ActionButton text='Save' />
+        <Grid item xs={10}>
+          <Button fullWidth variant='contained' color='primary' type='submit'>
+            Save <AddIcon />
+          </Button>
+        </Grid>
       </Grid>
     </form>
   );
