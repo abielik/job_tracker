@@ -68,7 +68,6 @@ function JobCard(props) {
             <Link onClick={handleLinkClick}>Go to Job Post</Link>
           </Typography>
           <EditJobCardDialogBox
-            displayTitle={`${title} @ ${company}`}
             title={title}
             company={company}
             jobLink={jobLink}

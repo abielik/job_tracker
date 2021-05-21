@@ -43,7 +43,6 @@ export default function EditJobCardDialogBox(props) {
   };
 
   const {
-    displayTitle,
     title,
     company,
     jobLink,
@@ -71,19 +70,21 @@ export default function EditJobCardDialogBox(props) {
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton
-              edge='start'
-              color='inherit'
-              onClick={handleClose}
-              aria-label='close'
-            >
-              <CloseIcon />
-            </IconButton>
             <Typography variant='h6' className={classes.title}>
-              {displayTitle}
+              {`${title} @ ${company}`}
+            </Typography>
+            <Typography variant='body1' className={classes.title}>
+              {`Current application status: ${status}`}
             </Typography>
             <Button autoFocus color='inherit' onClick={handleClose}>
-              save
+              <IconButton
+                edge='start'
+                color='inherit'
+                onClick={handleClose}
+                aria-label='close'
+              >
+                <CloseIcon />
+              </IconButton>
             </Button>
           </Toolbar>
         </AppBar>
