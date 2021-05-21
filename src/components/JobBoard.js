@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import {
-  getAllApplications,
+  //getAllApplications,
   listenForNewApplications,
 } from '../firebase/getAllApplications';
 import ApplicationFormDialogBox from './ApplicationFormDialogBox';
@@ -16,6 +16,7 @@ import ApplicationFormDialogBox from './ApplicationFormDialogBox';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    paddingTop: '10px',
   },
   paper: {
     overflow: 'auto',
@@ -24,10 +25,14 @@ const useStyles = makeStyles((theme) => ({
   },
   columnHeading: {
     backgroundColor: 'lightGray',
+    paddingBottom: '5px',
   },
   gridContainer: {
-    paddingBottom: '10px',
-    backgroundColor: '#282c34',
+    paddingBottom: '5px',
+    paddingTop: '5px',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    //backgroundColor: '#3f51b5',
   },
 }));
 

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: {
     height: '180px',
     width: '300px',
-    backgroundColor: 'lightBlue',
+    backgroundColor: 'lightGray',
   },
 
   content: {
