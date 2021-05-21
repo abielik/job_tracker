@@ -121,6 +121,8 @@ function JobBoard(props) {
                             jobLink={filteredApplication.jobLink}
                             status={filteredApplication.status}
                             description={filteredApplication.description}
+                            location={filteredApplication.location}
+                            salary={filteredApplication.salary}
                             userId={props.user.uid}
                             applicationId={filteredApplication.id}
                           />

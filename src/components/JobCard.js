@@ -39,6 +39,8 @@ function JobCard(props) {
     jobLink,
     status,
     description,
+    location,
+    salary,
     userId,
     applicationId,
   } = props;
@@ -73,6 +75,8 @@ function JobCard(props) {
             jobLink={jobLink}
             status={status}
             description={description}
+            location={location}
+            salary={salary}
             userId={userId}
             applicationId={applicationId}
           />

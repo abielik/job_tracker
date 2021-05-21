@@ -50,6 +50,8 @@ export default function EditJobCardDialogBox(props) {
     description,
     userId,
     applicationId,
+    location,
+    salary,
   } = props;
 
   return (
@@ -96,6 +98,8 @@ export default function EditJobCardDialogBox(props) {
           applicationId={applicationId}
           status={status}
           description={description}
+          location={location}
+          salary={salary}
           handleClose={handleClose}
         />
       </Dialog>

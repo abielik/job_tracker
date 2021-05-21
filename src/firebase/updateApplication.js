@@ -10,7 +10,9 @@ export async function updateApplication(
   company,
   status,
   jobLink,
-  description
+  description,
+  location,
+  salary
 ) {
   try {
     const applicationDocRef = firestore
@@ -25,6 +27,8 @@ export async function updateApplication(
       status,
       jobLink,
       description,
+      location,
+      salary,
     });
   } catch (err) {
     console.log('Origin: updateApplication.updateApplication(): ', err);

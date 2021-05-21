@@ -26,6 +26,8 @@ export default function EditApplicationForm(props) {
   const [jobLink, setJobLink] = useState(props.jobLink);
   const [status, setStatus] = useState(props.status);
   const [description, setDescription] = useState(props.description);
+  const [location, setLocation] = useState(props.location);
+  const [salary, setSalary] = useState(props.salary);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -49,7 +51,9 @@ export default function EditApplicationForm(props) {
       company,
       status,
       jobLink,
-      description
+      description,
+      location,
+      salary
     );
     props.handleClose();
   };
@@ -111,20 +115,20 @@ export default function EditApplicationForm(props) {
 
         <Grid item xs={4}>
           <TextField
-            //defaultValue={company}
+            defaultValue={location}
             id='location'
             label='Location'
             variant='filled'
-            //onChange={(event) => setCompany(event.target.value)}
+            onChange={(event) => setLocation(event.target.value)}
           />
         </Grid>
         <Grid item xs={2}>
           <TextField
-            //defaultValue={jobLink}
+            defaultValue={salary}
             id='salary'
             label='Salary'
             variant='filled'
-            //onChange={(event) => setJobLink(event.target.value)}
+            onChange={(event) => setSalary(event.target.value)}
           />
         </Grid>
         <Grid item xs={6}>
