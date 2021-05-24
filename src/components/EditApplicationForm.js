@@ -25,9 +25,9 @@ export default function EditApplicationForm(props) {
   const [company, setCompany] = useState(props.company);
   const [jobLink, setJobLink] = useState(props.jobLink);
   const [status, setStatus] = useState(props.status);
-  const [description, setDescription] = useState(props.description);
-  const [location, setLocation] = useState(props.location);
-  const [salary, setSalary] = useState(props.salary);
+  const [description, setDescription] = useState(props.description || '');
+  const [location, setLocation] = useState(props.location || '');
+  const [salary, setSalary] = useState(props.salary || '');
 
   const handleSubmit = (event) => {
     event.preventDefault();
