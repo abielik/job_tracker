@@ -7,8 +7,9 @@ import Button from '@material-ui/core/Button';
 
 import AddIcon from '@material-ui/icons/Add';
 
+import DeleteApplicationDialogBox from './DeleteApplicationDialogBox';
 import { updateApplication } from '../firebase/updateApplication';
-import { deleteApplication } from '../firebase/deleteApplication';
+
 // import ActionButton from './ActionButton';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,9 +60,6 @@ export default function EditApplicationForm(props) {
     props.handleClose();
   };
 
-  const handleDelete = (event) => {
-    deleteApplication(props.userId, props.applicationId);
-  };
   const statuses = ['Applied', 'Interviewing', 'Rejected'];
   return (
     <form
@@ -153,9 +151,11 @@ export default function EditApplicationForm(props) {
           </Button>
         </Grid>
         <Grid item xs={2}>
-          <Button variant='contained' onClick={handleDelete}>
-            DELETE
-          </Button>
+          <DeleteApplicationDialogBox
+            fullWidth
+            userId={props.userId}
+            applicationId={props.applicationId}
+          />
         </Grid>
       </Grid>
     </form>
