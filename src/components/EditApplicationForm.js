@@ -93,7 +93,7 @@ export default function EditApplicationForm(props) {
           <TextField
             select
             id='status'
-            label='Select'
+            label='Status'
             value={status}
             variant='filled'
             onChange={(event) => setStatus(event.target.value)}
