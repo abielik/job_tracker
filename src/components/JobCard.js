@@ -9,10 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 import EditJobCardDialogBox from './EditJobCardDialogBox';
+import LogoAvatar from './LogoAvatar';
 
 const useStyles = makeStyles({
   root: {
-    height: '180px',
+    height: '280px',
     width: '300px',
     backgroundColor: 'lightGray',
   },
@@ -53,6 +54,7 @@ function JobCard(props) {
     <Card className={classes.root} variant='outlined'>
       <CardActionArea>
         <CardContent className={classes.content}>
+          <LogoAvatar company={company} />
           <Typography variant='h6' noWrap>
             {title}
           </Typography>
