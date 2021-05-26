@@ -1,14 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
-//import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Chip from '@material-ui/core/Chip';
-import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 
@@ -58,8 +53,6 @@ function JobCard(props) {
           </Typography>
         }
       />
-
-      {/* <CardContent className={classes.content}></CardContent> */}
       <CardActions>
         <EditJobCardDialogBox
           title={title}
@@ -74,17 +67,9 @@ function JobCard(props) {
         />
 
         <Tooltip title='Go to Job Post'>
-          <Button onClick={handleLinkClick}>
+          <Button onClick={handleLinkClick} color='primary'>
             <LinkIcon />
           </Button>
-
-          {/* <Chip
-            label={<LinkIcon />}
-            onClick={handleLinkClick}
-            color='inherit'
-            clickable
-            variant='outlined'
-          /> */}
         </Tooltip>
         <Typography variant='body2' component='p'>
           {dateApplied}
