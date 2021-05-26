@@ -5,8 +5,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActionArea from '@material-ui/core/CardActionArea';
 //import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-
+import Chip from '@material-ui/core/Chip';
 import Link from '@material-ui/core/Link';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import LinkIcon from '@material-ui/icons/Link';
 
 import EditJobCardDialogBox from './EditJobCardDialogBox';
 import LogoAvatar from './LogoAvatar';
@@ -55,6 +58,16 @@ function JobCard(props) {
       <CardActionArea>
         <CardContent className={classes.content}>
           <LogoAvatar company={company} />
+          <Tooltip title='Go to Job Post'>
+            <Chip
+              label={<LinkIcon />}
+              onClick={handleLinkClick}
+              color='primary'
+              clickable
+              variant='outlined'
+            />
+          </Tooltip>
+
           <Typography variant='h6' noWrap>
             {title}
           </Typography>
