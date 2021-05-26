@@ -55,48 +55,46 @@ function JobCard(props) {
 
   return (
     <Card className={classes.root} variant='outlined'>
-      <CardActionArea>
-        <CardContent className={classes.content}>
-          <LogoAvatar company={company} />
-          <Tooltip title='Go to Job Post'>
-            <Chip
-              label={<LinkIcon />}
-              onClick={handleLinkClick}
-              color='primary'
-              clickable
-              variant='outlined'
-            />
-          </Tooltip>
-
-          <Typography variant='h6' noWrap>
-            {title}
-          </Typography>
-          <Typography
-            className={classes.company}
-            variant='subtitle2'
-            color='textSecondary'
-          >
-            {company}
-          </Typography>
-          <Typography variant='body2' component='p'>
-            {dateApplied}
-          </Typography>
-          <Typography>
-            <Link onClick={handleLinkClick}>Go to Job Post</Link>
-          </Typography>
-          <EditJobCardDialogBox
-            title={title}
-            company={company}
-            jobLink={jobLink}
-            status={status}
-            description={description}
-            location={location}
-            salary={salary}
-            userId={userId}
-            applicationId={applicationId}
+      <CardContent className={classes.content}>
+        <LogoAvatar company={company} />
+        <Tooltip title='Go to Job Post'>
+          <Chip
+            label={<LinkIcon />}
+            onClick={handleLinkClick}
+            color='primary'
+            clickable
+            variant='outlined'
           />
-        </CardContent>
-      </CardActionArea>
+        </Tooltip>
+
+        <Typography variant='h6' noWrap>
+          {title}
+        </Typography>
+        <Typography
+          className={classes.company}
+          variant='subtitle2'
+          color='textSecondary'
+        >
+          {company}
+        </Typography>
+        <Typography variant='body2' component='p'>
+          {dateApplied}
+        </Typography>
+        <Typography>
+          <Link onClick={handleLinkClick}>Go to Job Post</Link>
+        </Typography>
+        <EditJobCardDialogBox
+          title={title}
+          company={company}
+          jobLink={jobLink}
+          status={status}
+          description={description}
+          location={location}
+          salary={salary}
+          userId={userId}
+          applicationId={applicationId}
+        />
+      </CardContent>
     </Card>
   );
 }
