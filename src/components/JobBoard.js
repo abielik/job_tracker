@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     overflow: 'auto',
     height: 700,
-    width: 300,
+    width: 350,
   },
   columnHeading: {
     backgroundColor: 'lightGray',

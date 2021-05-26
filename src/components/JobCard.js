@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
 
 import LinkIcon from '@material-ui/icons/Link';
 
@@ -18,46 +19,9 @@ import LogoAvatar from './LogoAvatar';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '300px',
-
-    // display: 'flex',
-    // height: '100%',
-    // width: '100%',
+    width: '350px',
+    backgroundColor: 'lightgray',
   },
-  // details: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   justifyContent: 'flex-start',
-  // },
-  // content: {},
-  // logo: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  // },
-  // buttons: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'space-around',
-  //   paddingLeft: theme.spacing(1),
-  //   paddingBottom: theme.spacing(1),
-  // },
-  // root: {
-  //   height: '280px',
-  //   width: '300px',
-  //   backgroundColor: 'lightGray',
-  // },
-
-  content: {
-    textAlign: 'left',
-  },
-  // title: {
-  //   fontWeight: 'bold',
-  // },
-
-  // company: {
-  //   marginBottom: 12,
-  //   lineHeight: 1.8,
-  // },
 }));
 
 function JobCard(props) {
@@ -83,15 +47,19 @@ function JobCard(props) {
     <Card className={classes.root} variant='outlined'>
       <CardHeader
         avatar={<LogoAvatar company={company} />}
-        title={title}
-        subheader={company}
+        title={
+          <Typography variant='h6' noWrap align='left'>
+            {title}
+          </Typography>
+        }
+        subheader={
+          <Typography variant='body2' noWrap align='left'>
+            {company}
+          </Typography>
+        }
       />
 
-      <CardContent className={classes.content}>
-        <Typography variant='body2' component='p'>
-          {dateApplied}
-        </Typography>
-      </CardContent>
+      {/* <CardContent className={classes.content}></CardContent> */}
       <CardActions>
         <EditJobCardDialogBox
           title={title}
@@ -106,14 +74,21 @@ function JobCard(props) {
         />
 
         <Tooltip title='Go to Job Post'>
-          <Chip
+          <Button onClick={handleLinkClick}>
+            <LinkIcon />
+          </Button>
+
+          {/* <Chip
             label={<LinkIcon />}
             onClick={handleLinkClick}
-            color='primary'
+            color='inherit'
             clickable
-            // variant='outlined'
-          />
+            variant='outlined'
+          /> */}
         </Tooltip>
+        <Typography variant='body2' component='p'>
+          {dateApplied}
+        </Typography>
       </CardActions>
     </Card>
   );
