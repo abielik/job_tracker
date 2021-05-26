@@ -11,7 +11,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
 import Slide from '@material-ui/core/Slide';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import EditApplicationForm from './EditApplicationForm';
 
@@ -56,14 +58,17 @@ export default function EditJobCardDialogBox(props) {
 
   return (
     <div>
-      <Button
-        fullWidth
-        variant='outlined'
-        color='primary'
-        onClick={handleClickOpen}
-      >
-        Open
-      </Button>
+      <Tooltip title='Edit Applitcation'>
+        <Button
+          fullWidth
+          // variant='outlined'
+          color='primary'
+          onClick={handleClickOpen}
+        >
+          <EditIcon />
+        </Button>
+      </Tooltip>
+
       <Dialog
         fullScreen
         open={open}
