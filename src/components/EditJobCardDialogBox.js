@@ -12,6 +12,7 @@ import Slide from '@material-ui/core/Slide';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import EditApplicationForm from './EditApplicationForm';
+import LogoAvatar from './LogoAvatar';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -73,6 +74,7 @@ export default function EditJobCardDialogBox(props) {
       >
         <AppBar className={classes.appBar}>
           <Toolbar>
+            <LogoAvatar company={company} />
             <Typography variant='h6' className={classes.title}>
               {`${title} @ ${company}`}
             </Typography>

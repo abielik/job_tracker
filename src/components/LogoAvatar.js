@@ -14,11 +14,17 @@ const useStyles = makeStyles((theme) => ({
 export default function LogoAvatar(props) {
   const classes = useStyles();
 
+  const removeSpacesFromCompanyName = (company) => {
+    return company.split(' ').join('');
+  };
+
   return (
     <div className={classes.root}>
       <Avatar
         alt={props.company}
-        src={`https://logo.clearbit.com/${props.company}.com`}
+        src={`https://logo.clearbit.com/${removeSpacesFromCompanyName(
+          props.company
+        )}.com`}
       />
     </div>
   );
