@@ -145,6 +145,9 @@ export default function EditApplicationForm(props) {
             onChange={(event) => setDescription(event.target.value)}
           />
         </Grid>
+        <Grid item xs={2}>
+          <Button fullWidth variant='contained' color='primary'></Button>
+        </Grid>
         <Grid item xs={10}>
           <Button fullWidth variant='contained' color='primary' type='submit'>
             Save <AddIcon />
