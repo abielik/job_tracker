@@ -9,6 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import DeleteApplicationDialogBox from './DeleteApplicationDialogBox';
 import { updateApplication } from '../firebase/updateApplication';
+import ColorPicker from './ColorPicker';
 
 // import ActionButton from './ActionButton';
 
@@ -146,7 +147,7 @@ export default function EditApplicationForm(props) {
           />
         </Grid>
         <Grid item xs={2}>
-          <Button fullWidth variant='contained' color='primary'></Button>
+          <ColorPicker />
         </Grid>
         <Grid item xs={10}>
           <Button fullWidth variant='contained' color='primary' type='submit'>
