@@ -1,14 +1,56 @@
 import React, { useState } from 'react';
 import { CirclePicker } from 'react-color';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Tooltip from '@material-ui/core/Tooltip';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: 'inline-block',
+    alignItems: 'center',
+    borderRadius: '42px',
+    padding: '22px 31px',
+    marginTop: '25px',
+  },
+}));
 
 export default function ColorPicker(props) {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen((prev) => !prev);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Paper style={{ backgroundColor: props.cardColor }}>
-      <CirclePicker
-        color={props.cardColor}
-        onChangeComplete={(color) => props.setCardColor(color.hex)}
-      />
-    </Paper>
+    <ClickAwayListener onClickAway={handleClose}>
+      <React.Fragment>
+        <Tooltip title='Change Card Color'>
+          <Button
+            className={classes.button}
+            fullWidth
+            size='large'
+            style={{
+              backgroundColor: props.cardColor,
+            }}
+            onClick={handleClickOpen}
+          ></Button>
+        </Tooltip>
+
+        <div>
+          {open ? (
+            <CirclePicker
+              color={props.cardColor}
+              onChangeComplete={(color) => props.setCardColor(color.hex)}
+            />
+          ) : null}
+        </div>
+      </React.Fragment>
+    </ClickAwayListener>
   );
 }
