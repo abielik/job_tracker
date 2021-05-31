@@ -31,6 +31,7 @@ export default function EditApplicationForm(props) {
   const [description, setDescription] = useState(props.description || '');
   const [location, setLocation] = useState(props.location || '');
   const [salary, setSalary] = useState(props.salary || '');
+  const [cardColor, setCardColor] = useState(props.cardColor);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,7 +57,8 @@ export default function EditApplicationForm(props) {
       jobLink,
       description,
       location,
-      salary
+      salary,
+      cardColor
     );
     props.handleClose();
   };
@@ -147,7 +149,7 @@ export default function EditApplicationForm(props) {
           />
         </Grid>
         <Grid item xs={2}>
-          <ColorPicker />
+          <ColorPicker cardColor={cardColor} setCardColor={setCardColor} />
         </Grid>
         <Grid item xs={10}>
           <Button fullWidth variant='contained' color='primary' type='submit'>

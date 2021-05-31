@@ -15,7 +15,7 @@ import LogoAvatar from './LogoAvatar';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '350px',
-    backgroundColor: 'lightgray',
+    //backgroundColor: 'lightgray',
   },
 }));
 
@@ -32,6 +32,7 @@ function JobCard(props) {
     salary,
     userId,
     applicationId,
+    cardColor,
   } = props;
 
   const handleLinkClick = () => {
@@ -39,7 +40,11 @@ function JobCard(props) {
   };
 
   return (
-    <Card className={classes.root} variant='outlined'>
+    <Card
+      style={{ backgroundColor: cardColor }}
+      className={classes.root}
+      variant='outlined'
+    >
       <CardHeader
         avatar={<LogoAvatar company={company} />}
         title={
@@ -64,6 +69,7 @@ function JobCard(props) {
           salary={salary}
           userId={userId}
           applicationId={applicationId}
+          cardColor={cardColor}
         />
 
         <Tooltip title='Go to Job Post'>

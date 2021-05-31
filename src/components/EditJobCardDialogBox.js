@@ -51,6 +51,7 @@ export default function EditJobCardDialogBox(props) {
     applicationId,
     location,
     salary,
+    cardColor,
   } = props;
 
   return (
@@ -104,6 +105,7 @@ export default function EditJobCardDialogBox(props) {
           location={location}
           salary={salary}
           handleClose={handleClose}
+          cardColor={cardColor}
         />
       </Dialog>
     </div>

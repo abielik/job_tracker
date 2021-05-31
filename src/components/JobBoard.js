@@ -125,6 +125,7 @@ function JobBoard(props) {
                             salary={filteredApplication.salary}
                             userId={props.user.uid}
                             applicationId={filteredApplication.id}
+                            cardColor={filteredApplication.cardColor}
                           />
                         </Grid>
                       );
