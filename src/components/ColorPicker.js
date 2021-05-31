@@ -28,29 +28,28 @@ export default function ColorPicker(props) {
   };
 
   return (
-    <ClickAwayListener onClickAway={handleClose}>
-      <React.Fragment>
+    <React.Fragment>
+      <ClickAwayListener onClickAway={handleClose}>
         <Tooltip title='Change Card Color'>
           <Button
             className={classes.button}
             fullWidth
             size='large'
             style={{
-              backgroundColor: props.cardColor,
+              backgroundColor: props.cardColor || '#d3d3d3',
             }}
             onClick={handleClickOpen}
           ></Button>
         </Tooltip>
-
-        <div>
-          {open ? (
-            <CirclePicker
-              color={props.cardColor}
-              onChangeComplete={(color) => props.setCardColor(color.hex)}
-            />
-          ) : null}
-        </div>
-      </React.Fragment>
-    </ClickAwayListener>
+      </ClickAwayListener>
+      <div>
+        {open ? (
+          <CirclePicker
+            color={props.cardColor}
+            onChangeComplete={(color) => props.setCardColor(color.hex)}
+          />
+        ) : null}
+      </div>
+    </React.Fragment>
   );
 }
