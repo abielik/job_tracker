@@ -36,7 +36,7 @@ export default function ColorPicker(props) {
             fullWidth
             size='large'
             style={{
-              backgroundColor: props.cardColor || '#d3d3d3',
+              backgroundColor: props.cardColor || '#3f51b5',
             }}
             onClick={handleClickOpen}
           ></Button>

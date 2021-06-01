@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '350px',
     //backgroundColor: 'lightgray',
+    color: 'white',
   },
 }));
 
@@ -73,7 +74,7 @@ function JobCard(props) {
         />
 
         <Tooltip title='Go to Job Post'>
-          <Button onClick={handleLinkClick} color='primary'>
+          <Button onClick={handleLinkClick} color='inherit'>
             <LinkIcon />
           </Button>
         </Tooltip>

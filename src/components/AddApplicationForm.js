@@ -46,7 +46,8 @@ export function AddApplicationForm(props) {
       company,
       dateApplied,
       'applied',
-      jobLink
+      jobLink,
+      '#3f51b5'
     );
     props.handleClose();
   };
