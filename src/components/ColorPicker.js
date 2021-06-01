@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display: 'inline-block',
     alignItems: 'center',
-    borderRadius: '42px',
+    //borderRadius: '20px',
     padding: '22px 31px',
     marginTop: '25px',
     color: 'white',
