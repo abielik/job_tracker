@@ -67,7 +67,7 @@ export default function MenuDropdown() {
       >
         <StyledMenuItem onClick={signOut}>
           <ListItemIcon>
-            <AccountCircle fontSize='medium' />
+            <AccountCircle fontSize='large' />
           </ListItemIcon>
           <ListItemText primary='Log Out' />
         </StyledMenuItem>

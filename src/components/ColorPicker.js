@@ -9,9 +9,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display: 'inline-block',
     alignItems: 'center',
-    borderRadius: '42px',
+    //borderRadius: '20px',
     padding: '22px 31px',
     marginTop: '25px',
+    color: 'white',
   },
 }));
 
@@ -36,10 +37,12 @@ export default function ColorPicker(props) {
             fullWidth
             size='large'
             style={{
-              backgroundColor: props.cardColor || '#d3d3d3',
+              backgroundColor: props.cardColor || '#3f51b5',
             }}
             onClick={handleClickOpen}
-          ></Button>
+          >
+            Card Color
+          </Button>
         </Tooltip>
       </ClickAwayListener>
       <div>

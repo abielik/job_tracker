@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '350px',
     //backgroundColor: 'lightgray',
+    color: 'white',
   },
 }));
 
@@ -48,12 +49,17 @@ function JobCard(props) {
       <CardHeader
         avatar={<LogoAvatar company={company} />}
         title={
-          <Typography variant='h6' noWrap align='left'>
+          <Typography
+            variant='subtitle1'
+            noWrap
+            align='left'
+            style={{ fontWeight: 'bold' }}
+          >
             {title}
           </Typography>
         }
         subheader={
-          <Typography variant='body2' noWrap align='left'>
+          <Typography variant='subtitle1' noWrap align='left'>
             {company}
           </Typography>
         }
@@ -73,7 +79,7 @@ function JobCard(props) {
         />
 
         <Tooltip title='Go to Job Post'>
-          <Button onClick={handleLinkClick} color='primary'>
+          <Button onClick={handleLinkClick} color='inherit'>
             <LinkIcon />
           </Button>
         </Tooltip>

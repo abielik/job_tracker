@@ -60,7 +60,7 @@ export default function EditJobCardDialogBox(props) {
         <Button
           fullWidth
           // variant='outlined'
-          color='primary'
+          color='inherit'
           onClick={handleClickOpen}
         >
           <EditIcon />

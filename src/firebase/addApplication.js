@@ -9,7 +9,8 @@ export async function addApplication(
   company,
   dateApplied,
   status,
-  jobLink
+  jobLink,
+  cardColor
 ) {
   try {
     const applicationsCollectionRef = firestore
@@ -23,6 +24,7 @@ export async function addApplication(
       dateApplied,
       status,
       jobLink,
+      cardColor,
     });
   } catch (err) {
     console.log('Origin: addApplication.addApplication(): ', err);

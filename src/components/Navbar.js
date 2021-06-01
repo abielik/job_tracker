@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar(props) {
   const classes = useStyles();
-  console.log('whats props ', props);
+
   return (
     <div className={classes.root}>
       <Grid container direction='row' justify='space-between'>
