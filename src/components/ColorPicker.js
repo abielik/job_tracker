@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '42px',
     padding: '22px 31px',
     marginTop: '25px',
+    color: 'white',
   },
 }));
 
@@ -39,7 +40,9 @@ export default function ColorPicker(props) {
               backgroundColor: props.cardColor || '#3f51b5',
             }}
             onClick={handleClickOpen}
-          ></Button>
+          >
+            Card Color
+          </Button>
         </Tooltip>
       </ClickAwayListener>
       <div>
