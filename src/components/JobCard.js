@@ -49,12 +49,17 @@ function JobCard(props) {
       <CardHeader
         avatar={<LogoAvatar company={company} />}
         title={
-          <Typography variant='h6' noWrap align='left'>
+          <Typography
+            variant='subtitle1'
+            noWrap
+            align='left'
+            style={{ fontWeight: 'bold' }}
+          >
             {title}
           </Typography>
         }
         subheader={
-          <Typography variant='body2' noWrap align='left'>
+          <Typography variant='subtitle1' noWrap align='left'>
             {company}
           </Typography>
         }
