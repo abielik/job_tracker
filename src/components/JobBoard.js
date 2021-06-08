@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import JobCard from './JobCard';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,6 +40,35 @@ function JobBoard(props) {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
+  const [jobCards, moveJobCards] = useState(allApplications);
+
+  function handleOnDragEnd(result) {
+    const jobCardsArray = Array.from(jobCards);
+    // removing from array
+    const [reorderedJobCards] = jobCardsArray.splice(result.source.index, 1);
+    // adding the copy at new location without deleting anything
+    jobCardsArray.splice(result.destination.index, 0, reorderedJobCards);
+
+    moveJobCards(jobCardsArray);
+  }
+
+  // const handleOnDragEnd = ({ destination, source }) => {
+  //   console.log('from, ', source);
+  //   console.log('to ,', destination);
+  //   if (!destination) {
+  //     console.log('not dropped in droppable');
+  //     return;
+  //   }
+  //   if (
+  //     destination.index === source.index &&
+  //     destination.droppableId === source.droppableId
+  //   ) {
+  //     console.log('droppped in same place');
+  //     return;
+  //   }
+
+  //   const cardCopy = jobCards[source.droppableId].
+  // };
 
   // this effect only runs when component initially mounts
   // useEffect(() => {
@@ -77,65 +106,91 @@ function JobBoard(props) {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <Grid item sm={12}>
-        <Grid container justify='center' spacing={2}>
-          {jobStatuses.map((status, index) => {
-            return (
-              <Grid item key={index}>
-                <Paper className={classes.columnHeading}>
-                  <Grid>
-                    {status}
-                    <Grid className={classes.jobCount}>
-                      <Typography>
-                        {allApplications.filter((application) => {
-                          return application.status === status.toLowerCase();
-                        }).length + ' jobs'}
-                      </Typography>
-                    </Grid>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Grid item sm={12}>
+          <Grid container justify='center' spacing={2}>
+            {jobStatuses.map((status, index) => {
+              return (
+                <Grid item key={index}>
+                  <Paper className={classes.columnHeading}>
                     <Grid>
-                      <ApplicationFormDialogBox
-                        userId={props.user.uid}
-                        text='Add Application'
-                      />
+                      {status}
+                      <Grid className={classes.jobCount}>
+                        <Typography>
+                          {allApplications.filter((application) => {
+                            return application.status === status.toLowerCase();
+                          }).length + ' jobs'}
+                        </Typography>
+                      </Grid>
+                      <Grid>
+                        <ApplicationFormDialogBox
+                          userId={props.user.uid}
+                          text='Add Application'
+                        />
+                      </Grid>
                     </Grid>
-                  </Grid>
-                </Paper>
-                <Paper className={classes.paper}>
-                  {allApplications
-                    .filter((application) => {
-                      return application.status === status.toLowerCase();
-                    })
-                    .map((filteredApplication) => {
-                      return (
-                        <Grid
-                          container
-                          key={filteredApplication.id}
-                          item
-                          xs={12}
-                          className={classes.gridContainer}
-                        >
-                          <JobCard
-                            title={filteredApplication.title}
-                            company={filteredApplication.company}
-                            dateApplied={filteredApplication.dateApplied}
-                            jobLink={filteredApplication.jobLink}
-                            status={filteredApplication.status}
-                            description={filteredApplication.description}
-                            location={filteredApplication.location}
-                            salary={filteredApplication.salary}
-                            userId={props.user.uid}
-                            applicationId={filteredApplication.id}
-                            cardColor={filteredApplication.cardColor}
-                          />
-                        </Grid>
-                      );
-                    })}
-                </Paper>
-              </Grid>
-            );
-          })}
+                  </Paper>
+
+                  <Droppable droppableId={status.toLowerCase()}>
+                    {(provided) => (
+                      <Paper
+                        className={classes.paper}
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                      >
+                        {allApplications
+                          .filter((application) => {
+                            return application.status === status.toLowerCase();
+                          })
+                          .map((filteredApplication, index) => {
+                            return (
+                              <Draggable
+                                key={filteredApplication.id}
+                                draggableId={filteredApplication.id}
+                                index={index}
+                              >
+                                {(provided) => (
+                                  <Grid
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    ref={provided.innerRef}
+                                    container
+                                    item
+                                    xs={12}
+                                    className={classes.gridContainer}
+                                  >
+                                    <JobCard
+                                      title={filteredApplication.title}
+                                      company={filteredApplication.company}
+                                      dateApplied={
+                                        filteredApplication.dateApplied
+                                      }
+                                      jobLink={filteredApplication.jobLink}
+                                      status={filteredApplication.status}
+                                      description={
+                                        filteredApplication.description
+                                      }
+                                      location={filteredApplication.location}
+                                      salary={filteredApplication.salary}
+                                      userId={props.user.uid}
+                                      applicationId={filteredApplication.id}
+                                      cardColor={filteredApplication.cardColor}
+                                    />
+                                  </Grid>
+                                )}
+                              </Draggable>
+                            );
+                          })}
+                        {provided.placeholder}
+                      </Paper>
+                    )}
+                  </Droppable>
+                </Grid>
+              );
+            })}
+          </Grid>
         </Grid>
-      </Grid>
+      </DragDropContext>
     </Grid>
   );
 }
