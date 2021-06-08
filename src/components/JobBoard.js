@@ -40,35 +40,61 @@ function JobBoard(props) {
   const classes = useStyles();
   const jobStatuses = ['Applied', 'Interviewing', 'Rejected'];
   const [allApplications, setAllApplications] = useState([]);
-  const [jobCards, moveJobCards] = useState(allApplications);
+  const [cardState, setCardState] = useState({
+    applied: {
+      title: 'Applied',
+      items: [],
+    },
+    interviewing: {
+      title: 'Interviewing',
+      items: [],
+    },
+    rejected: {
+      title: 'Rejected',
+      items: [],
+    },
+  });
 
-  function handleOnDragEnd(result) {
-    const jobCardsArray = Array.from(jobCards);
-    // removing from array
-    const [reorderedJobCards] = jobCardsArray.splice(result.source.index, 1);
-    // adding the copy at new location without deleting anything
-    jobCardsArray.splice(result.destination.index, 0, reorderedJobCards);
+  // function handleOnDragEnd(result) {
+  //   const jobCardsArray = Array.from(jobCards);
+  //   // removing from array
+  //   const [reorderedJobCards] = jobCardsArray.splice(result.source.index, 1);
+  //   // adding the copy at new location without deleting anything
+  //   jobCardsArray.splice(result.destination.index, 0, reorderedJobCards);
 
-    moveJobCards(jobCardsArray);
-  }
+  //   moveJobCards(jobCardsArray);
+  // }
 
-  // const handleOnDragEnd = ({ destination, source }) => {
-  //   console.log('from, ', source);
-  //   console.log('to ,', destination);
-  //   if (!destination) {
-  //     console.log('not dropped in droppable');
-  //     return;
-  //   }
-  //   if (
-  //     destination.index === source.index &&
-  //     destination.droppableId === source.droppableId
-  //   ) {
-  //     console.log('droppped in same place');
-  //     return;
-  //   }
+  const handleOnDragEnd = ({ destination, source }) => {
+    console.log('from, ', source);
+    console.log('to ,', destination);
+    if (!destination) {
+      console.log('not dropped in droppable');
+      return;
+    }
+    if (
+      destination.index === source.index &&
+      destination.droppableId === source.droppableId
+    ) {
+      console.log('droppped in same place');
+      return;
+    }
 
-  //   const cardCopy = jobCards[source.droppableId].
-  // };
+    const cardCopy = { ...cardState[source.droppableId].items[source.index] };
+    setCardState((prev) => {
+      prev = { ...prev };
+      // Remove from previous items array
+      prev[source.droppableId].items.splice(source.index, 1);
+      //adding to new items array location
+      prev[destination.droppableId].items.splice(
+        destination.index,
+        0,
+        cardCopy
+      );
+
+      return prev;
+    });
+  };
 
   // this effect only runs when component initially mounts
   // useEffect(() => {
