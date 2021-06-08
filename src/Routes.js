@@ -5,6 +5,8 @@ import LoginScreen from './components/LoginScreen';
 import JobBoard from './components/JobBoard';
 import Navbar from './components/Navbar';
 
+import TestJobBoard from './components/TestJobBoard';
+
 import firebase from './firebase/index';
 import 'firebase/auth';
 
@@ -26,7 +28,9 @@ export default function Routes() {
             <Route
               exact
               path='/job-board'
-              render={(routeProps) => <JobBoard {...routeProps} user={user} />}
+              render={(routeProps) => (
+                <TestJobBoard {...routeProps} user={user} />
+              )}
             />
           </Switch>
           <Redirect from='/' to='/job-board' />
