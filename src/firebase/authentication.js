@@ -1,6 +1,5 @@
 import firebase from './index';
-import 'firebase/auth';
-
+// import 'firebase/auth';
 const auth = firebase.auth();
 
 export function signInWithGoogle() {
