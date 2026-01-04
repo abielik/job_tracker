@@ -18,6 +18,7 @@ export function signOut() {
     .signOut()
     .then(() => {
       console.log('signed out');
+      console.log('test')
     })
     .catch((error) => {
       window.alert(error.message);
